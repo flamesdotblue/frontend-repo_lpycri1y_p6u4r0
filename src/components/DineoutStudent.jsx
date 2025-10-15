@@ -2,6 +2,12 @@ import React from 'react';
 import HeaderBar from './HeaderBar';
 import { PartyPopper, Users, Split, MapPin, Star, ChevronRight } from 'lucide-react';
 
+const dineoutImages = [
+  'https://images.unsplash.com/photo-1498654896293-37aacf113fd9?q=80&w=1200&auto=format&fit=crop', // restaurant interior
+  'https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=1200&auto=format&fit=crop', // dinner table
+  'https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?q=80&w=1200&auto=format&fit=crop', // cocktails
+];
+
 export default function DineoutStudent({ onToggleStudentMode, studentMode }) {
   return (
     <div className="min-h-screen bg-[#FFF6EE] text-gray-900">
@@ -59,16 +65,18 @@ export default function DineoutStudent({ onToggleStudentMode, studentMode }) {
           <button className="text-xs text-[#FC8019] font-semibold flex items-center gap-1">See all <ChevronRight size={14} /></button>
         </div>
         <div className="mt-3 space-y-3">
-          {[1,2,3].map(i => (
+          {dineoutImages.map((src, i) => (
             <div key={i} className="rounded-2xl overflow-hidden border border-gray-100 bg-white shadow-sm">
-              <div className="h-28 bg-gray-100" />
+              <div className="h-28 w-full">
+                <img src={src} alt={`Dineout place ${i+1}`} className="h-full w-full object-cover" />
+              </div>
               <div className="p-3">
                 <div className="flex items-center justify-between">
-                  <p className="text-sm font-semibold">Party-Friendly Place #{i}</p>
+                  <p className="text-sm font-semibold">Party-Friendly Place #{i+1}</p>
                   <span className="text-[10px] px-2 py-0.5 rounded-full bg-orange-100 text-[#FC8019] font-semibold">Student-Friendly</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-gray-600 mt-1">
-                  <Star size={14} className="text-green-600" /> 4.{i} • <MapPin size={14} /> 1.{i} km
+                <div className="flex items-center gap-2 text-xs text-gray-700 mt-1">
+                  <Star size={14} className="text-green-600" /> 4.{i+1} • <MapPin size={14} /> 1.{i+1} km
                 </div>
               </div>
             </div>
